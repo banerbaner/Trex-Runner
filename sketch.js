@@ -15,7 +15,7 @@ var gamestate = PLAY;
 var restart, gameover;
 
 function preload(){   
-  jump_sound = loadSound("jump.mp3");
+  jumpsound = loadSound("jump.mp3");
   
   trex_running = loadAnimation("trex1.png","trex3.png","trex4.png");
   trex_collided = loadImage("trex_collided.png");
@@ -38,7 +38,7 @@ function preload(){
 function setup() {
   createCanvas(600, 200);
   
-  jumpsound = addSound("jump", jump_sound);
+  jump_sound = addSound("jump", jump_sound);
   
   trex = createSprite(50,180,20,50);
   trex.addAnimation("running", trex_running);
