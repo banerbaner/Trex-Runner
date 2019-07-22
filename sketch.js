@@ -1,6 +1,8 @@
 var trex, trex_running, trex_collided;
 var ground, invisibleGround, groundImage;
 
+var jumpsound, checkpoint, diesound;
+
 var cloudsGroup, cloudImage;
 var obstaclesGroup, obstacle1, obstacle2, obstacle3, obstacle4, obstacle5, obstacle6;
 
@@ -13,7 +15,9 @@ var gamestate = PLAY;
 var restart, gameover;
 
 function preload(){   
-  trex_running =       loadAnimation("trex1.png","trex3.png","trex4.png");
+  jump_sound = loadSound("jump.mp3");
+  
+  trex_running = loadAnimation("trex1.png","trex3.png","trex4.png");
   trex_collided = loadImage("trex_collided.png");
   
   groundImage = loadImage("ground2.png");
@@ -33,6 +37,8 @@ function preload(){
 
 function setup() {
   createCanvas(600, 200);
+  
+  jumpsound = addSound("jump", jump_sound);
   
   trex = createSprite(50,180,20,50);
   trex.addAnimation("running", trex_running);
@@ -79,6 +85,7 @@ function draw() {
     
     if(keyDown("space")) {
       trex.velocityY = -10;
+      playSound(jump);
     }
   
   trex.velocityY = trex.velocityY + 0.8
